@@ -5,6 +5,8 @@
 此项目遵循 [语义化版本控制](https://semver.org/lang/zh-CN/)。
 
 
+### [0.1.3](https://github.com/lchtao26/PanguMarkdown/compare/v0.1.2...v0.1.3) (2025-07-08)
+
 ### [0.1.2](https://github.com/lchtao26/PanguMarkdown/compare/v0.1.1...v0.1.2) (2025-07-08)
 
 
