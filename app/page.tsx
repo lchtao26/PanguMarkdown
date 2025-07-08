@@ -6,54 +6,14 @@ import { Textarea } from "@/components/ui/textarea";
 import { Check, Copy, Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
 import ReactMarkdown from "react-markdown";
+import rehypeHighlight from "rehype-highlight";
+import remarkEmoji from "remark-emoji";
+import remarkGfm from "remark-gfm";
 import remarkPangu from "remark-pangu";
 import remarkSmartypants from "remark-smartypants";
 
 export default function Home() {
-	const [markdown, setMarkdown] = useState(`# 欢迎使用 Pangu Markdown
-
-一个专为中英文混排设计的优雅 Markdown 编辑器。
-
-## 特色功能
-
-### 🌟 智能排版
-自动在中英文之间添加合适的空格，让你的文档更加美观易读。
-
-### ✨ 优雅符号
-"智能引号"和'单引号'会自动转换为正确的样式。
-连字符--变成en dash，三连字符---变成em dash。
-省略号...会变得更加优雅。
-
-### 📝 实时预览
-在编辑的同时，即时查看渲染效果。
-
-## 使用示例
-
-### 代码展示
-
-\`\`\`javascript
-// 中英文混排示例
-const message = "Hello世界！";
-console.log(message);
-\`\`\`
-
-### 列表格式
-
-1. 第一个重要事项 Important Item
-2. 第二个关键要点 Key Point
-3. 第三个核心概念 Core Concept
-
-### 文本样式
-
-这里有**粗体文字 Bold Text**和*斜体文字 Italic Text*的混合使用。
-
-你还可以添加[链接 Link](https://example.com)来引用外部资源。
-
-> 这是一个引用块 Quote Block，用来突出重要信息。
-
----
-
-开始在左侧编辑区域输入你的 Markdown 内容，右侧会实时显示渲染结果！`);
+	const [markdown, setMarkdown] = useState("");
 
 	const [copied, setCopied] = useState(false);
 	const [showInputPanel, setShowInputPanel] = useState(true);
@@ -141,7 +101,13 @@ console.log(message);
 						<CardContent className="flex-1 p-4 overflow-auto">
 							<div className="prose prose-sm max-w-none dark:prose-invert">
 								<ReactMarkdown
-									remarkPlugins={[remarkPangu, remarkSmartypants]}
+									remarkPlugins={[
+										remarkPangu,
+										remarkSmartypants,
+										remarkGfm,
+										remarkEmoji,
+									]}
+									rehypePlugins={[rehypeHighlight]}
 									components={{
 										// Custom styling for better appearance
 										h1: ({ children }) => (
@@ -216,6 +182,30 @@ console.log(message);
 											<em className="italic text-foreground">{children}</em>
 										),
 										hr: () => <hr className="border-border my-6" />,
+										table: ({ children }) => (
+											<div className="overflow-x-auto my-4">
+												<table className="min-w-full border-collapse border border-border">
+													{children}
+												</table>
+											</div>
+										),
+										thead: ({ children }) => (
+											<thead className="bg-muted">{children}</thead>
+										),
+										tbody: ({ children }) => <tbody>{children}</tbody>,
+										tr: ({ children }) => (
+											<tr className="border-b border-border">{children}</tr>
+										),
+										th: ({ children }) => (
+											<th className="border border-border px-4 py-2 text-left font-semibold text-foreground">
+												{children}
+											</th>
+										),
+										td: ({ children }) => (
+											<td className="border border-border px-4 py-2 text-foreground">
+												{children}
+											</td>
+										),
 									}}
 								>
 									{markdown}
