@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-	title: "PanguMarkdown - 中英文混排 Markdown 编辑器",
+	title: "Pangu Markdown",
 	description:
 		"一个现代化的 Markdown 编辑器，专为中英文混排优化。支持实时预览、语法高亮、表格渲染和自动格式化。",
 	keywords: [
@@ -32,19 +32,18 @@ export const metadata: Metadata = {
 		address: false,
 		telephone: false,
 	},
-	metadataBase: new URL("https://pangumarkdown.vercel.app"),
+	metadataBase: new URL("https://pangu-markdown.vercel.app"),
 	openGraph: {
-		title: "PanguMarkdown - 中英文混排 Markdown 编辑器",
-		description:
-			"一个现代化的 Markdown 编辑器，专为中英文混排优化。支持实时预览、语法高亮、表格渲染和自动格式化。",
-		url: "https://pangumarkdown.vercel.app",
-		siteName: "PanguMarkdown",
+		title: "Pangu Markdown",
+		description: "一个现代化的 Markdown 编辑器，专为中英文混排优化。",
+		url: "https://pangu-markdown.vercel.app",
+		siteName: "Pangu Markdown",
 		locale: "zh_CN",
 		type: "website",
 	},
 	twitter: {
 		card: "summary_large_image",
-		title: "PanguMarkdown - 中英文混排 Markdown 编辑器",
+		title: "Pangu Markdown",
 		description: "一个现代化的 Markdown 编辑器，专为中英文混排优化。",
 	},
 	robots: {
