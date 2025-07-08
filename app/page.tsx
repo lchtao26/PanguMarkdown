@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
-import { Check, Copy, Eye, EyeOff, Maximize2, Minimize2 } from "lucide-react";
+import { Check, Copy, Edit, Maximize2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import rehypeHighlight from "rehype-highlight";
@@ -63,19 +63,19 @@ export default function Home() {
 					)}
 
 					{/* Markdown Preview */}
-					<Card className="flex flex-col relative">
+					<Card className="flex flex-col p-0 relative">
 						<div className="absolute right-4 top-4 z-10 flex items-center gap-2">
 							<Button
 								variant="outline"
 								size="sm"
 								onClick={() => setShowInputPanel(!showInputPanel)}
-								aria-label={showInputPanel ? "全屏预览" : "退出全屏"}
+								aria-label={showInputPanel ? "全屏预览" : "显示编辑"}
 								className="h-8 w-8 p-0"
 							>
 								{showInputPanel ? (
 									<Maximize2 className="h-4 w-4" />
 								) : (
-									<Minimize2 className="h-4 w-4" />
+									<Edit className="h-4 w-4" />
 								)}
 							</Button>
 							<Button
@@ -92,7 +92,7 @@ export default function Home() {
 								)}
 							</Button>
 						</div>
-						<CardContent className="flex-1 p-4 overflow-auto">
+						<CardContent className="flex-1 py-14 px-10 overflow-auto">
 							<div className="prose prose-sm max-w-none dark:prose-invert">
 								<ReactMarkdown
 									remarkPlugins={[
