@@ -64,9 +64,9 @@ export default function Home() {
 					)}
 
 					{/* Markdown Preview */}
-					<Card className="flex flex-col p-0 relative">
+					<Card className="flex flex-col p-0 relative group">
 						{markdown.trim() && (
-							<div className="absolute right-4 top-4 z-10 flex items-center gap-2">
+							<div className="absolute right-4 top-4 z-10 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
 								<Button
 									variant="outline"
 									size="sm"
@@ -95,7 +95,7 @@ export default function Home() {
 								</Button>
 							</div>
 						)}
-						<CardContent className="flex-1 py-14 px-10 overflow-auto">
+						<CardContent className="flex-1 p-8 overflow-auto">
 							<div className="prose prose-sm max-w-none dark:prose-invert">
 								<ReactMarkdown
 									remarkPlugins={[
