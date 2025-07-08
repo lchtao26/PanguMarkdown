@@ -1,0 +1,50 @@
+{
+	"packages": {
+		".": {
+			"release-type": "node",
+			"package-name": "pangumarkdown",
+			"changelog-sections": [
+				{
+					"type": "feat",
+					"section": "✨ 新功能"
+				},
+				{
+					"type": "fix",
+					"section": "🐛 Bug 修复"
+				},
+				{
+					"type": "docs",
+					"section": "📚 文档"
+				},
+				{
+					"type": "style",
+					"section": "💄 样式"
+				},
+				{
+					"type": "refactor",
+					"section": "♻️ 重构"
+				},
+				{
+					"type": "perf",
+					"section": "⚡ 性能优化"
+				},
+				{
+					"type": "test",
+					"section": "✅ 测试"
+				},
+				{
+					"type": "build",
+					"section": "🔨 构建"
+				},
+				{
+					"type": "ci",
+					"section": "👷 CI/CD"
+				},
+				{
+					"type": "chore",
+					"section": "🔧 其他"
+				}
+			]
+		}
+	}
+}

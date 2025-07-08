@@ -85,32 +85,60 @@ PanguMarkdown/
 
 ## 发布流程
 
-本项目使用 [standard-version](https://github.com/conventional-changelog/standard-version) 进行自动化发布和更新日志生成。
+本项目使用 [release-please](https://github.com/googleapis/release-please) 进行自动化发布和更新日志生成。
 
-### 发布命令
+### 发布流程
+
+Release-please 通过 GitHub Actions 自动工作：
+
+1. **自动检测变更**：基于 conventional commits 自动检测需要发布的版本类型
+2. **创建 Release PR**：自动创建包含 CHANGELOG 和版本更新的 Pull Request
+3. **合并发布**：合并 PR 后自动创建 GitHub Release
+
+### 本地命令
 
 ```bash
-# 自动发布（自动决定版本类型）
+# 创建 release PR（需要 GITHUB_TOKEN 环境变量）
+pnpm release:pr
+
+# 创建 GitHub release（需要 GITHUB_TOKEN 环境变量）
 pnpm release
 
-# 手动指定版本类型
-pnpm release:patch   # 补丁版本 (0.1.0 -> 0.1.1)
-pnpm release:minor   # 次版本 (0.1.0 -> 0.2.0)
-pnpm release:major   # 主版本 (0.1.0 -> 1.0.0)
-
-# 预览发布（不会实际发布）
-pnpm release:dry
-
-# 首次发布
-pnpm release:first
+# 初始化 release-please（首次使用）
+pnpm release:bootstrap
 ```
+
+### Commit 规范
+
+本项目遵循 [Angular Conventional Commits](https://www.conventionalcommits.org/zh-hans/) 规范：
+
+```
+<类型>: <描述>
+
+[可选的正文]
+
+[可选的脚注]
+```
+
+支持的类型：
+- `feat`: 新功能
+- `fix`: Bug 修复
+- `docs`: 文档更新
+- `style`: 代码格式化
+- `refactor`: 重构
+- `perf`: 性能优化
+- `test`: 测试
+- `build`: 构建相关
+- `ci`: CI/CD 相关
+- `chore`: 其他修改
 
 ## 贡献
 
 欢迎提交 Issue 和 Pull Request！请确保：
 
 1. 遵循项目的代码规范
-2. 在提交前运行 `pnpm lint` 检查代码质量
+2. 提交信息符合 Conventional Commits 规范
+3. 在提交前运行 `pnpm lint` 检查代码质量
 
 ## 许可证
 

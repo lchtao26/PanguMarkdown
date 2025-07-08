@@ -8,12 +8,9 @@
 		"start": "next start",
 		"lint": "next lint",
 		"prepare": "husky",
-		"release": "standard-version",
-		"release:minor": "standard-version --release-as minor",
-		"release:major": "standard-version --release-as major",
-		"release:patch": "standard-version --release-as patch",
-		"release:dry": "standard-version --dry-run",
-		"release:first": "standard-version --first-release"
+		"release:pr": "release-please release-pr --repo-url=https://github.com/lchtao26/PanguMarkdown --token=$GITHUB_TOKEN",
+		"release": "release-please github-release --repo-url=https://github.com/lchtao26/PanguMarkdown --token=$GITHUB_TOKEN",
+		"release:bootstrap": "release-please bootstrap --repo-url=https://github.com/lchtao26/PanguMarkdown --token=$GITHUB_TOKEN"
 	},
 	"dependencies": {
 		"@hookform/resolvers": "^5.1.1",
@@ -76,7 +73,7 @@
 		"eslint-config-next": "15.3.4",
 		"husky": "^9.1.7",
 		"lint-staged": "^16.1.2",
-		"standard-version": "^9.5.0",
+		"release-please": "^17.1.1",
 		"tailwindcss": "^4",
 		"tw-animate-css": "^1.3.4",
 		"typescript": "^5"
