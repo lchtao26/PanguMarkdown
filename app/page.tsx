@@ -7,6 +7,7 @@ import { Check, Copy, Edit, Maximize2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import rehypeHighlight from "rehype-highlight";
+import remarkBreaks from "remark-breaks";
 import remarkEmoji from "remark-emoji";
 import remarkGfm from "remark-gfm";
 import remarkPangu from "remark-pangu";
@@ -46,7 +47,7 @@ export default function Home() {
 		<div className="min-h-screen p-4 md:p-8 bg-background">
 			<div className="max-w-7xl mx-auto">
 				<div
-					className={`grid gap-6 h-[calc(100vh-200px)] ${showInputPanel ? "grid-cols-1 lg:grid-cols-2" : "grid-cols-1"}`}
+					className={`grid gap-6 h-[calc(100vh-70px)] ${showInputPanel ? "grid-cols-1 lg:grid-cols-2" : "grid-cols-1"}`}
 				>
 					{/* Markdown Input */}
 					{showInputPanel && (
@@ -56,7 +57,7 @@ export default function Home() {
 									value={markdown}
 									onChange={(e) => setMarkdown(e.target.value)}
 									placeholder="在这里输入你的 Markdown 内容..."
-									className="w-full h-full resize-none font-mono text-sm border-none focus:ring-0 focus-visible:ring-0"
+									className="w-full h-full resize-none font-mono text-sm border-none shadow-none focus:ring-0 focus-visible:ring-0"
 								/>
 							</CardContent>
 						</Card>
@@ -64,34 +65,36 @@ export default function Home() {
 
 					{/* Markdown Preview */}
 					<Card className="flex flex-col p-0 relative">
-						<div className="absolute right-4 top-4 z-10 flex items-center gap-2">
-							<Button
-								variant="outline"
-								size="sm"
-								onClick={() => setShowInputPanel(!showInputPanel)}
-								aria-label={showInputPanel ? "全屏预览" : "显示编辑"}
-								className="h-8 w-8 p-0"
-							>
-								{showInputPanel ? (
-									<Maximize2 className="h-4 w-4" />
-								) : (
-									<Edit className="h-4 w-4" />
-								)}
-							</Button>
-							<Button
-								variant="outline"
-								size="sm"
-								onClick={handleCopy}
-								className="h-8 w-8 p-0"
-								aria-label={copied ? "已复制" : "复制"}
-							>
-								{copied ? (
-									<Check className="h-4 w-4" />
-								) : (
-									<Copy className="h-4 w-4" />
-								)}
-							</Button>
-						</div>
+						{markdown.trim() && (
+							<div className="absolute right-4 top-4 z-10 flex items-center gap-2">
+								<Button
+									variant="outline"
+									size="sm"
+									onClick={() => setShowInputPanel(!showInputPanel)}
+									aria-label={showInputPanel ? "全屏预览" : "显示编辑"}
+									className="h-8 w-8 p-0"
+								>
+									{showInputPanel ? (
+										<Maximize2 className="h-4 w-4" />
+									) : (
+										<Edit className="h-4 w-4" />
+									)}
+								</Button>
+								<Button
+									variant="outline"
+									size="sm"
+									onClick={handleCopy}
+									className="h-8 w-8 p-0"
+									aria-label={copied ? "已复制" : "复制"}
+								>
+									{copied ? (
+										<Check className="h-4 w-4" />
+									) : (
+										<Copy className="h-4 w-4" />
+									)}
+								</Button>
+							</div>
+						)}
 						<CardContent className="flex-1 py-14 px-10 overflow-auto">
 							<div className="prose prose-sm max-w-none dark:prose-invert">
 								<ReactMarkdown
@@ -100,6 +103,7 @@ export default function Home() {
 										remarkSmartypants,
 										remarkGfm,
 										remarkEmoji,
+										remarkBreaks,
 									]}
 									rehypePlugins={[rehypeHighlight]}
 									components={{
