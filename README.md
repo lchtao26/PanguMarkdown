@@ -90,7 +90,7 @@ PanguMarkdown/
 ### 发布命令
 
 ```bash
-# 自动发布（根据 conventional commits 自动决定版本类型）
+# 自动发布（自动决定版本类型）
 pnpm release
 
 # 手动指定版本类型
@@ -105,37 +105,12 @@ pnpm release:dry
 pnpm release:first
 ```
 
-### Commit 规范
-
-本项目遵循 [Angular Conventional Commits](https://www.conventionalcommits.org/zh-hans/) 规范：
-
-```
-<类型>: <描述>
-
-[可选的正文]
-
-[可选的脚注]
-```
-
-支持的类型：
-- `feat`: 新功能
-- `fix`: Bug 修复
-- `docs`: 文档更新
-- `style`: 代码格式化
-- `refactor`: 重构
-- `perf`: 性能优化
-- `test`: 测试
-- `build`: 构建相关
-- `ci`: CI/CD 相关
-- `chore`: 其他修改
-
 ## 贡献
 
 欢迎提交 Issue 和 Pull Request！请确保：
 
 1. 遵循项目的代码规范
-2. 提交信息符合 Conventional Commits 规范
-3. 在提交前运行 `pnpm lint` 检查代码质量
+2. 在提交前运行 `pnpm lint` 检查代码质量
 
 ## 许可证
 
