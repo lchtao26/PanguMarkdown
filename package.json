@@ -56,6 +56,7 @@
 		"react-markdown": "^10.1.0",
 		"react-resizable-panels": "^3.0.3",
 		"remark-pangu": "^2.2.0",
+		"remark-smartypants": "^3.0.2",
 		"sonner": "^2.0.5",
 		"tailwind-merge": "^3.3.1",
 		"vaul": "^1.1.2",

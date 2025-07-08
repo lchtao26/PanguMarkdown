@@ -7,44 +7,53 @@ import { Check, Copy, Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkPangu from "remark-pangu";
+import remarkSmartypants from "remark-smartypants";
 
 export default function Home() {
-	const [markdown, setMarkdown] = useState(`# Pangu Markdown
+	const [markdown, setMarkdown] = useState(`# 欢迎使用 Pangu Markdown
 
-欢迎使用 Pangu Markdown 编辑器！这是一个实时的 Markdown 编辑器，支持Pangu插件来自动格式化中英文混排。
+一个专为中英文混排设计的优雅 Markdown 编辑器。
 
-## 功能特性
+## 特色功能
 
-- **实时预览**：在下方查看Markdown渲染结果
-- **Pangu格式化**：自动在中英文之间添加空格
-- **现代UI**：使用shadcn/ui组件构建
+### 🌟 智能排版
+自动在中英文之间添加合适的空格，让你的文档更加美观易读。
 
-## 示例
+### ✨ 优雅符号
+"智能引号"和'单引号'会自动转换为正确的样式。
+连字符--变成en dash，三连字符---变成em dash。
+省略号...会变得更加优雅。
 
-### 代码块
+### 📝 实时预览
+在编辑的同时，即时查看渲染效果。
+
+## 使用示例
+
+### 代码展示
 
 \`\`\`javascript
-const greeting = "Hello世界";
-console.log(greeting);
+// 中英文混排示例
+const message = "Hello世界！";
+console.log(message);
 \`\`\`
 
-### 列表
+### 列表格式
 
-1. 第一项item
-2. 第二项item
-3. 第三项item
+1. 第一个重要事项 Important Item
+2. 第二个关键要点 Key Point
+3. 第三个核心概念 Core Concept
 
-### 强调
+### 文本样式
 
-**粗体bold**和*斜体italic*文本。
+这里有**粗体文字 Bold Text**和*斜体文字 Italic Text*的混合使用。
 
-### 链接
+你还可以添加[链接 Link](https://example.com)来引用外部资源。
 
-访问[GitHub](https://github.com)获取更多信息。
+> 这是一个引用块 Quote Block，用来突出重要信息。
 
 ---
 
-在上方的文本框中编辑Markdown，下方会实时显示渲染结果！`);
+开始在左侧编辑区域输入你的 Markdown 内容，右侧会实时显示渲染结果！`);
 
 	const [copied, setCopied] = useState(false);
 	const [showInputPanel, setShowInputPanel] = useState(true);
@@ -62,8 +71,6 @@ console.log(greeting);
 	return (
 		<div className="min-h-screen p-4 md:p-8 bg-background">
 			<div className="max-w-7xl mx-auto">
-				<h1 className="text-3xl font-bold text-center mb-8">Pangu Markdown</h1>
-
 				<div
 					className={`grid gap-6 h-[calc(100vh-200px)] ${showInputPanel ? "grid-cols-1 lg:grid-cols-2" : "grid-cols-1"}`}
 				>
@@ -71,7 +78,7 @@ console.log(greeting);
 					{showInputPanel && (
 						<Card className="flex flex-col">
 							<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4">
-								<CardTitle className="text-lg">Markdown 输入</CardTitle>
+								<CardTitle className="text-lg">Markdown</CardTitle>
 								<Button
 									variant="outline"
 									size="sm"
@@ -134,7 +141,7 @@ console.log(greeting);
 						<CardContent className="flex-1 p-4 overflow-auto">
 							<div className="prose prose-sm max-w-none dark:prose-invert">
 								<ReactMarkdown
-									remarkPlugins={[remarkPangu]}
+									remarkPlugins={[remarkPangu, remarkSmartypants]}
 									components={{
 										// Custom styling for better appearance
 										h1: ({ children }) => (
