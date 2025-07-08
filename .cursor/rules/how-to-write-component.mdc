@@ -1,0 +1,32 @@
+---
+description:
+globs:
+alwaysApply: true
+---
+Keep Props Minimal and Focused
+
+1. Limit the number of props a component accepts to maintain clarity and reusability
+2. Consider splitting components when they accept too many props:
+   - Break down into smaller, more focused components
+   - Use composition through children or slots
+   - Implement compound components pattern for complex UIs
+
+Note on Performance Optimization:
+- As of React 19, the compiler automatically handles memoization optimizations
+- Manual `useMemo` and `useCallback` are generally unnecessary
+- The compiler will automatically optimize render performance where beneficial
+
+// Example component implementation
+```
+const MyComponent: React.FC<{
+  title: string;
+  onClick?: () => void;
+}> = ({ title, onClick }) => {
+  return (
+    <div onClick={onClick}>
+      <h1>{title}</h1>
+    </div>
+  );
+};
+
+```

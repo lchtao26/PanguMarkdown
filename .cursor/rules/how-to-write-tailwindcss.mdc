@@ -1,0 +1,24 @@
+---
+description:
+globs:
+alwaysApply: true
+---
+## Tailwind CSS Guidelines
+
+### Mobile-First Responsive Design
+- Design mobile-first, scale up using: base → sm → md → lg → xl → 2xl
+- Example: `p-4 md:p-6 lg:p-8`
+- Prefer relative units over fixed sizes
+
+### Color System
+Use semantic color tokens:
+- Backgrounds: `bg-primary`, `bg-background`
+- Text: `text-primary-foreground`, `text-primary`
+- Borders: `border-border`
+
+You can find all the design token related css variables in [globals.css](mdc:src/app/globals.css)
+
+Example:
+```tsx
+<div className="bg-primary text-primary-foreground">Content</div>
+```

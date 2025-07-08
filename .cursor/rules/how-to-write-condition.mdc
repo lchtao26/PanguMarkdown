@@ -1,0 +1,36 @@
+---
+description:
+globs:
+alwaysApply: true
+---
+### Control Flow
+- Use early returns and guard clauses
+- Reduce nesting and improve readability
+- Handle edge cases first
+
+```typescript
+// Good - Using early returns
+const processUserData = (user: IUser | null): IUserProfile | null => {
+  if (!user) return null;
+  if (!user.isActive) return null;
+
+  return {
+    id: user.id,
+    displayName: user.name,
+    email: user.email
+  };
+};
+
+// Avoid - Nested conditions
+const processUserData = (user: IUser | null): IUserProfile | null => {
+  if (user) {
+    if (user.isActive) {
+      return {
+        id: user.id,
+        displayName: user.name,
+        email: user.email
+      };
+    }
+  }
+  return null;
+};

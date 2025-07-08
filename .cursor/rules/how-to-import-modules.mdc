@@ -1,0 +1,9 @@
+---
+description:
+globs:
+alwaysApply: true
+---
+1. Always check `package.json` first to see if there are existing dependencies that can help implement your feature
+2. Avoid adding new dependencies if existing ones can provide similar functionality
+3. Leverage built-in capabilities of current libraries before implementing custom solutions
+4. Use shadcn/ui primitives from `@/components/ui` when possible

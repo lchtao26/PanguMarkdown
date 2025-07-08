@@ -1,0 +1,6 @@
+---
+description: how to install packages
+globs:
+alwaysApply: true
+---
+use pnpm;

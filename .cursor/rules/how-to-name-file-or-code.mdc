@@ -1,0 +1,36 @@
+---
+description:
+globs:
+alwaysApply: true
+---
+## Naming Conventions
+
+### Files: kebab-case
+`feature-card.tsx`, `use-auth.ts`
+
+### Components: PascalCase
+- Specific names: `UserProfileHeader` (not "Header")
+- Group with prefixes: `UserProfile`, `UserProfileDetails`
+- Variants: `Button`, `ButtonPrimary`
+
+### Hooks: camelCase with use*
+`useUserAuthentication`, `useIsAuthenticated`
+
+### Functions/Variables: camelCase
+- Verb-noun: `fetchUserData()`, `handleSubmit()`
+- Booleans: `isLoading`, `hasError`
+- Collections: plural arrays (`users`), noun objects (`userProfile`)
+
+### Constants: UPPER_SNAKE_CASE
+`const HTTP_STATUS = { OK: 200 }`
+
+### Types: PascalCase with `I` preffix, and suffixes
+`interface IButtonProps`, `type IAuthState`
+
+### Events
+- Methods: `handleSubmit`
+- Props: `onClick`
+
+### Store/API
+- Stores: `useAuthenticationStore`
+- API: HTTP verbs + domain (`getUsers()`)
