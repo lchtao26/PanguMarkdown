@@ -3,8 +3,8 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
-import { Check, Copy, Eye, EyeOff } from "lucide-react";
-import { useState } from "react";
+import { Check, Copy, Eye, EyeOff, Maximize2, Minimize2 } from "lucide-react";
+import { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import rehypeHighlight from "rehype-highlight";
 import remarkEmoji from "remark-emoji";
@@ -12,11 +12,25 @@ import remarkGfm from "remark-gfm";
 import remarkPangu from "remark-pangu";
 import remarkSmartypants from "remark-smartypants";
 
+const STORAGE_KEY = "pangu-markdown-content";
+
 export default function Home() {
 	const [markdown, setMarkdown] = useState("");
-
 	const [copied, setCopied] = useState(false);
 	const [showInputPanel, setShowInputPanel] = useState(true);
+
+	// Load markdown content from localStorage on component mount
+	useEffect(() => {
+		const savedContent = localStorage.getItem(STORAGE_KEY);
+		if (savedContent) {
+			setMarkdown(savedContent);
+		}
+	}, []);
+
+	// Save markdown content to localStorage whenever it changes
+	useEffect(() => {
+		localStorage.setItem(STORAGE_KEY, markdown);
+	}, [markdown]);
 
 	const handleCopy = async () => {
 		try {
@@ -36,68 +50,48 @@ export default function Home() {
 				>
 					{/* Markdown Input */}
 					{showInputPanel && (
-						<Card className="flex flex-col">
-							<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4">
-								<CardTitle className="text-lg">Markdown</CardTitle>
-								<Button
-									variant="outline"
-									size="sm"
-									onClick={() => setShowInputPanel(!showInputPanel)}
-									aria-label="隐藏输入面板"
-									className="h-8 px-3"
-								>
-									<EyeOff className="h-4 w-4 mr-2" />
-									隐藏
-								</Button>
-							</CardHeader>
-							<CardContent className="flex-1 p-4">
+						<Card className="flex flex-col p-0 relative">
+							<CardContent className="flex-1 p-6">
 								<Textarea
 									value={markdown}
 									onChange={(e) => setMarkdown(e.target.value)}
 									placeholder="在这里输入你的 Markdown 内容..."
-									className="w-full h-full resize-none font-mono text-sm"
+									className="w-full h-full resize-none font-mono text-sm border-none focus:ring-0 focus-visible:ring-0"
 								/>
 							</CardContent>
 						</Card>
 					)}
 
 					{/* Markdown Preview */}
-					<Card className="flex flex-col">
-						<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4">
-							<CardTitle className="text-lg">预览</CardTitle>
-							<div className="flex items-center gap-2">
-								{!showInputPanel && (
-									<Button
-										variant="outline"
-										size="sm"
-										onClick={() => setShowInputPanel(!showInputPanel)}
-										aria-label="显示输入面板"
-										className="h-8 px-3"
-									>
-										<Eye className="h-4 w-4 mr-2" />
-										显示编辑
-									</Button>
+					<Card className="flex flex-col relative">
+						<div className="absolute right-4 top-4 z-10 flex items-center gap-2">
+							<Button
+								variant="outline"
+								size="sm"
+								onClick={() => setShowInputPanel(!showInputPanel)}
+								aria-label={showInputPanel ? "全屏预览" : "退出全屏"}
+								className="h-8 w-8 p-0"
+							>
+								{showInputPanel ? (
+									<Maximize2 className="h-4 w-4" />
+								) : (
+									<Minimize2 className="h-4 w-4" />
 								)}
-								<Button
-									variant="outline"
-									size="sm"
-									onClick={handleCopy}
-									className="h-8 px-3"
-								>
-									{copied ? (
-										<>
-											<Check className="h-4 w-4 mr-2" />
-											已复制
-										</>
-									) : (
-										<>
-											<Copy className="h-4 w-4 mr-2" />
-											复制
-										</>
-									)}
-								</Button>
-							</div>
-						</CardHeader>
+							</Button>
+							<Button
+								variant="outline"
+								size="sm"
+								onClick={handleCopy}
+								className="h-8 w-8 p-0"
+								aria-label={copied ? "已复制" : "复制"}
+							>
+								{copied ? (
+									<Check className="h-4 w-4" />
+								) : (
+									<Copy className="h-4 w-4" />
+								)}
+							</Button>
+						</div>
 						<CardContent className="flex-1 p-4 overflow-auto">
 							<div className="prose prose-sm max-w-none dark:prose-invert">
 								<ReactMarkdown
