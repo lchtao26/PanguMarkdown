@@ -1,0 +1,38 @@
+{
+	"types": [
+		{ "type": "feat", "section": "✨ 新功能" },
+		{ "type": "fix", "section": "🐛 Bug 修复" },
+		{ "type": "docs", "section": "📚 文档" },
+		{ "type": "style", "section": "💄 样式" },
+		{ "type": "refactor", "section": "♻️ 重构" },
+		{ "type": "perf", "section": "⚡ 性能优化" },
+		{ "type": "test", "section": "✅ 测试" },
+		{ "type": "build", "section": "📦 构建" },
+		{ "type": "ci", "section": "👷 CI/CD" },
+		{ "type": "chore", "section": "🔧 其他" },
+		{ "type": "revert", "section": "⏪ 回滚" }
+	],
+	"commitUrlFormat": "https://github.com/lchtao26/PanguMarkdown/commit/{{hash}}",
+	"compareUrlFormat": "https://github.com/lchtao26/PanguMarkdown/compare/{{previousTag}}...{{currentTag}}",
+	"issueUrlFormat": "https://github.com/lchtao26/PanguMarkdown/issues/{{id}}",
+	"userUrlFormat": "https://github.com/{{user}}",
+	"releaseCommitMessageFormat": "chore(release): 发布 v{{currentTag}}",
+	"skip": {
+		"bump": false,
+		"changelog": false,
+		"commit": false,
+		"tag": false
+	},
+	"bumpFiles": [
+		{
+			"filename": "package.json",
+			"type": "json"
+		}
+	],
+	"packageFiles": [
+		{
+			"filename": "package.json",
+			"type": "json"
+		}
+	]
+}
