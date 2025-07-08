@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.2](https://github.com/lchtao26/PanguMarkdown/compare/v0.2.1...v0.2.2) (2025-07-08)
+
+
+### ✨ 新功能
+
+* 添加悬停显示操作按钮功能 ([6343785](https://github.com/lchtao26/PanguMarkdown/commit/6343785867b305e3cae202e0b46285b70fbbe882))
+
 ### [0.2.1](https://github.com/lchtao26/PanguMarkdown/compare/v0.2.0...v0.2.1) (2025-07-08)
 
 
