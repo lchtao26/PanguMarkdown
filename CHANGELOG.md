@@ -5,6 +5,13 @@
 此项目遵循 [语义化版本控制](https://semver.org/lang/zh-CN/)。
 
 
+### [0.1.2](https://github.com/lchtao26/PanguMarkdown/compare/v0.1.1...v0.1.2) (2025-07-08)
+
+
+### 🔧 其他
+
+* 切换到 standard-version 进行发布管理 ([6b6a958](https://github.com/lchtao26/PanguMarkdown/commit/6b6a9583eb13f6ef2a21a9d1a81f4263d102e707))
+
 ### 0.1.1 (2025-07-08)
 
 
